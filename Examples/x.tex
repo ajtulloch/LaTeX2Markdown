@@ -1,0 +1,96 @@
+\documentclass[12pt]{amsart}
+\usepackage{amsthm, amsmath, amssymb}
+\usepackage{setspace}
+\usepackage{listings}
+\onehalfspacing                 
+
+\usepackage[usenames, dvipsnames]{color}
+\definecolor{graphblue}{RGB}{52, 138, 189}
+\definecolor{graphpurple}{RGB}{122, 104, 166}
+
+\theoremstyle{plain}% default 
+\newtheorem{thm}{Theorem}[section] 
+\newtheorem{lem}[thm]{Lemma} 
+\newtheorem{prop}[thm]{Proposition} 
+\newtheorem{exer}[thm]{Exercise} 
+
+\lstset{
+language=bash,
+stepnumber=0,
+showspaces=false,
+breaklines=true,
+basicstyle=\ttfamily\scriptsize,
+frame=single,
+commentstyle=\scriptsize,
+prebreak=\raisebox{0ex}[0ex][0ex]{\ensuremath{\hookleftarrow}},
+showstringspaces=false,
+showtabs=false,
+identifierstyle=\ttfamily,
+commentstyle=\color{graphpurple},
+keywordstyle=\color{graphblue},
+tabsize=2
+}
+
+\title{Introduction to LaTeX2Markdown}
+\author{Andrew Tulloch}
+\begin{document}
+
+% LaTeX2Markdown IGNORE
+\maketitle
+% LaTeX2Markdown END
+
+\section{Example Section}
+\begin{thm}
+    There are infinitely many primes
+\end{thm}
+
+\begin{proof}
+    Suppose that $p_1 < p_2 < \dots < p_n$ are all of the primes. Let $P = 1 + \prod_{i=1}^n p_i$ and let $p$ be a prime dividing $P$.
+    
+    Then $p$ can not be any of $p_i$, for otherwise $p$ would divide the difference $P - \left(\prod_{i=1}^n p_i \right) - 1$, which is impossible. So this prime $p$ is still another prime, and $p_1, p_2, \dots p_n$ cannot be all of the primes.
+\end{proof}
+
+\begin{exer}
+    Give an alternative proof that there are an infinite number of prime numbers.
+\end{exer}
+
+To solve this exercise, we first introduce the following lemma.
+\begin{lem}
+    The Fermat numbers $F_n = 2^{2^{n}} + 1$ are pairwise relatively prime.
+\end{lem}
+
+\begin{proof}
+    It is easy to show by induction that \[
+    F_m - 2 = F_0 F_1 \dots F_{m-1}.
+    \]  This means that if $d$ divides both $F_n$ and $F_m$ (with $n < m$), then $d$ also divides $F_m - 2$.  Hence, $d$ divides 2.  But every Fermat number is odd, so $d$ is necessarily one.  This proves the lemma.
+\end{proof}
+
+We can now provide a solution to the exercise.
+
+\begin{thm}
+    There are infinitely many prime numbers (Goldbach's proof) 
+\end{thm}
+
+\begin{proof}
+    Choose a prime divisor $p_n$ of each Fermat number $F_n$.  By the lemma we know these primes are all distinct, showing there are infinitely many primes.
+\end{proof}
+
+\section{LaTeX examples}
+
+\begin{lstlisting}
+python latex2markdown.py latex.tex markdown.md
+cat latex.tex | python latex2markdown.py > markdown.md
+\end{lstlisting}
+
+\begin{enumerate}
+    \item Example list item
+    \item Another list item
+\end{enumerate}
+
+\begin{thm}
+    Let $U$ be an open subset of $\mathbb{C}$ which is simply connected, let $f: U \rightarrow \mathbb{C}$ be a holomorphic function, and let $\gamma$ be a rectifiable path in $U$ whose start point is equal to its end point.  Then \[
+    \oint_\gamma f(z) \, dz = 0.
+\] 
+\end{thm}
+
+\end{document}
