@@ -131,14 +131,19 @@ class LaTeX2Markdown(object):
     
         # Fix \\ formatting for line breaks in align blocks  
         output = re.sub(r" \\\\", r" \\\\\\\\", output)
-        # Fix Align* block formatting
+        # Convert align* block  to align - this fixes formatting
         output = re.sub(r"align\*", r"align", output)
-        # Fix emph{} formatting
+        
+        # Fix emph, textbf, texttt formatting
         output = re.sub(r"\\emph{(.*?)}", r"*\1*", output)
+        output = re.sub(r"\\textbf{(.*?)}", r"**\1**", output)
+        output = re.sub(r"\\texttt{(.*?)}", r"`\1`", output)
+        
         # Fix \% formatting
         output = re.sub(r"\\%", r"%", output)
         # Fix argmax, etc.
         output = re.sub(r"\\arg(max|min)", r"\\text{arg\1}", output)
+        
         # Throw away content in IGNORE/END block
         output = re.sub(r"% LaTeX2Markdown IGNORE(.*?)\% LaTeX2Markdown END", 
                         "", output, flags=re.DOTALL)

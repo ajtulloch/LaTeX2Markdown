@@ -77,18 +77,22 @@ We can now provide a solution to the exercise.
 
 \section{LaTeX examples}
 
-\begin{lstlisting}
-python latex2markdown.py latex.tex markdown.md
-cat latex.tex | python latex2markdown.py > markdown.md
-\end{lstlisting}
+We can format \emph{italic text}, \textbf{bold text}, and \texttt{code} blocks.
 
 \begin{enumerate}
-    \item Example list item
+    \item A list item
     \item Another list item
 \end{enumerate}
 
 \begin{thm}
-    This is a theorem.
+    This is a theorem.  It contains an \texttt{align} block.
+    
+    \begin{align*}
+        \nabla \cdot \mathbf{E} &= \frac {\rho} {\varepsilon_0} \\
+        \nabla \cdot \mathbf{B} &= 0 \\
+        \nabla \times \mathbf{E} &= -\frac{\partial \mathbf{B}} {\partial t} \\
+        \nabla \times \mathbf{B} &= \mu_0 \mathbf{J} + \mu_0 \varepsilon_0 \frac{\partial \mathbf{E}} {\partial t} \\
+    \end{align*}
 \end{thm}
 
 \begin{thm}[Theorem name]
@@ -102,6 +106,10 @@ cat latex.tex | python latex2markdown.py > markdown.md
 \begin{proof}
     This is a proof.
 \end{proof}
+
+\begin{lstlisting}
+This is a code listing.
+\end{lstlisting}
 
 
 
