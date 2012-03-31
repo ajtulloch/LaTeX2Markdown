@@ -48,7 +48,14 @@ class LaTeX2Markdown(object):
         header_contents = matchobj.group('header_contents')
     
         header = self._format_block_name(header_name)
-        return "{header} - {title}\n".format(header=header, title=header_contents)
+        
+        block_config = self._block_configuration[block_name]
+        separator = " - " if block_config["show_config"] else " "
+        
+        return "{header}{separator}{title}\n".format(   
+                        header=header, 
+                        title=header_contents,
+                        separator=)
 
     def _replace_block(self, matchobj):
         block_name = matchobj.group('block_name')

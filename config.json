@@ -1,0 +1,51 @@
+{
+    "enumerate": {
+        "line_indent_char": "", 
+        "list_heading": "1.", 
+        "markdown_heading": "", 
+        "pretty_name": "", 
+        "show_count": false
+    }, 
+    "exer": {
+        "line_indent_char": "> ", 
+        "markdown_heading": "####", 
+        "pretty_name": "Exercise", 
+        "show_count": true
+    }, 
+    "itemize": {
+        "line_indent_char": "", 
+        "list_heading": "*", 
+        "markdown_heading": "", 
+        "pretty_name": "", 
+        "show_count": false
+    }, 
+    "lem": {
+        "line_indent_char": "> ", 
+        "markdown_heading": "####", 
+        "pretty_name": "Lemma", 
+        "show_count": true
+    }, 
+    "lstlisting": {
+        "line_indent_char": "    ", 
+        "markdown_heading": "", 
+        "pretty_name": "", 
+        "show_count": false
+    }, 
+    "proof": {
+        "line_indent_char": "", 
+        "markdown_heading": "####", 
+        "pretty_name": "Proof", 
+        "show_count": false
+    }, 
+    "section": {
+        "markdown_heading": "###", 
+        "pretty_name": "", 
+        "show_count": false
+    }, 
+    "thm": {
+        "line_indent_char": "> ", 
+        "markdown_heading": "####", 
+        "pretty_name": "Theorem", 
+        "show_count": true
+    }
+}
