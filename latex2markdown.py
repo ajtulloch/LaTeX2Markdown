@@ -3,51 +3,11 @@ from collections import defaultdict
 
 #------------------------------------------------------------------------------
 
-_block_configuration = {
-    'exer': {
-        "markdown_heading": "####",
-        "pretty_name": "Exercise",
-        "line_indent_char": "> ",
-        "show_count": True
-    },
-    'thm': {
-        "markdown_heading": "####",
-        "pretty_name": "Theorem",
-        "line_indent_char": "> ",
-        "show_count": True
-    },    
-    'proof': {
-        "markdown_heading": "####",
-        "pretty_name": "Proof",
-        "line_indent_char": "",
-        "show_count": False
-    },
-    'lstlisting': {
-        "markdown_heading": "",
-        "pretty_name": "",
-        "line_indent_char": "    ",
-        "show_count": False
-    },
-    'enumerate': {
-        "list_heading": "1.",
-        "markdown_heading": "",
-        "pretty_name": "",
-        "line_indent_char": "",
-        "show_count": False
-    },
-    'itemize': {
-        "list_heading": "*",
-        "markdown_heading": "",
-        "pretty_name": "",
-        "line_indent_char": "",
-        "show_count": False
-    },
-    'section': {
-        "markdown_heading": "###",
-        "pretty_name": "",
-        "show_count": True
-    }
-}
+import json
+
+with open("config.json", "r") as f:
+    _block_configuration = json.load(f)
+
 
 #------------------------------------------------------------------------------
 
@@ -69,7 +29,7 @@ class LaTeX2Markdown(object):
                                     flags=re.DOTALL + re.VERBOSE)
 
         self._lists_re = re.compile(r"""\\begin{(?P<block_name>enumerate|itemize)} # list name
-                                    \[\(.\)\]? # Optional enumerate settings i.e. (a)
+                                    (\[.*?\])? # Optional enumerate settings i.e. (a)
                                     (?P<block_contents>.*?) # Non-greedy list contents
                                     \\end{(?P=block_name)}""", # closing list
                                     flags=re.DOTALL + re.VERBOSE)
@@ -169,7 +129,7 @@ class LaTeX2Markdown(object):
         output = re.sub(r"\\%", r"%", output)
         # Fix argmax, etc.
         output = re.sub(r"\\arg(max|min)", r"\\text{arg\1}", output)
-        
+        output = re.sub(r"% LaTeX2Markdown IGNORE(.*?)\% LaTeX2Markdown END", "", output, flags=re.DOTALL)
         return output
 
 #------------------------------------------------------------------------------
@@ -177,14 +137,15 @@ class LaTeX2Markdown(object):
 if __name__ == '__main__':
     import sys
     if len(sys.argv) == 1:
-        latex_string = sys.stdin.read()
+        input_file = "Examples/x.tex"
+        output_file = "y.md"
     else:
         input_file, output_file = sys.argv[1], sys.argv[2]
         
-        with open(input_file, 'r') as f:
-            latex_string = f.read()
-            y = LaTeX2Markdown(latex_string)
-            markdown_string = y.latex_to_markdown()
-            with open(output_file, 'w') as f_out:
-                f_out.write(markdown_string)
+    with open(input_file, 'r') as f:
+        latex_string = f.read()
+        y = LaTeX2Markdown(latex_string)
+        markdown_string = y.latex_to_markdown().lstrip().rstrip()
+        with open(output_file, 'w') as f_out:
+            f_out.write(markdown_string)
     
