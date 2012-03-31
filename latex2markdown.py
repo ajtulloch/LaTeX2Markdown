@@ -46,16 +46,13 @@ class LaTeX2Markdown(object):
     def _replace_header(self, matchobj):
         header_name = matchobj.group('header_name')
         header_contents = matchobj.group('header_contents')
-    
+        
         header = self._format_block_name(header_name)
         
-        block_config = self._block_configuration[block_name]
-        separator = " - " if block_config["show_config"] else " "
+        block_config = self._block_configuration[header_name]
+        separator = "-" if block_config.get("show_count") else ""
         
-        return "{header}{separator}{title}\n".format(   
-                        header=header, 
-                        title=header_contents,
-                        separator=)
+        return "{header} {separator} {title}\n".format(header=header, title=header_contents, separator=separator)
 
     def _replace_block(self, matchobj):
         block_name = matchobj.group('block_name')

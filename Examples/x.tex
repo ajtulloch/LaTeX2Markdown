@@ -87,10 +87,29 @@ cat latex.tex | python latex2markdown.py > markdown.md
     \item Another list item
 \end{enumerate}
 
-\begin{thm}
-    Let $U$ be an open subset of $\mathbb{C}$ which is simply connected, let $f: U \rightarrow \mathbb{C}$ be a holomorphic function, and let $\gamma$ be a rectifiable path in $U$ whose start point is equal to its end point.  Then \[
-    \oint_\gamma f(z) \, dz = 0.
-\] 
+\begin{thm}[Strong law of large numbers]  Let $X_1, \dots$ be IID random variables.  Let $\E(X_1) = \mu$, $\E(X_1^4) < \infty$.  Let $S_n = \sum_{j=1}^n X_j$.  Then \[
+    \overline X_n = \frac{1}{n} S_n \cas \mu 
+\]
 \end{thm}
 
+\begin{proof}
+    \begin{align*}
+        \E(\sum_{i=1}^n (X_i - \mu))^4 &= \sum_{i=1}^n E(X_i - \mu)^4 + 6 {n \choose 2} \sigma^4 \\
+        &= n \E(X_1 - \mu)^4 + 3n(n-1) \sigma^4 \\
+        &\leq Cn^2. 
+    \end{align*}
+    From Chebyshev, we have 
+    \begin{align*}
+        P(| S_n - \mu n| > \epsilon n) &\leq \frac{E(S_n - \mu n)^4}{)(\epsilon n)^4} \\
+                &\leq \frac{cn^2}{\epsilon^4 n^4} = \frac{k}{n^2} 
+    \end{align*}
+    and so \[
+        \sum_n P(|S_n - n \mu| > n \epsilon) < \infty,  \]
+    and so $P(\limsup \{ | \frac{S_n}{n} - \mu | > \epsilon \} ) = 0$.  Letting $A_\epsilon = \{ | \frac{S_n}{n} - \mu | > \epsilon \}$.  Then 
+    \begin{align*}
+        P(|\frac{S_n}{n} - \mu | \text{ does not converge to zero}) &= P(\bigcup_k A_{1/k}) \\
+        &\leq \sum_{k} P(A_{1/k}) \\
+        &= 0
+    \end{align*} by Borel-Cantelli.
+\end{proof}
 \end{document}
