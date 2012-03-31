@@ -1,6 +1,6 @@
 ###  Example Section
 
-#### Theorem 1 (Euler)
+#### Theorem 1 (Euclid)
 
 > There are infinitely many primes.
 
@@ -32,7 +32,7 @@ F_m - 2 = F_0 F_1 \dots F_{m-1}.
 
 We can now provide a solution to the exercise.
 
-#### Theorem 2 (Goldbach's prove of the infinitude of primes)
+#### Theorem 2 (Goldbach's proof of the infinitude of primes)
 
 > There are infinitely many prime numbers.
 

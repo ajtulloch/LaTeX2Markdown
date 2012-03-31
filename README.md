@@ -16,32 +16,40 @@ As neither Pandoc nor MathJax can deal with these documents, I hacked together a
 
 ## What's an example?
 
-The following LaTeX code:
+Go to [tullo.ch/LaTeX2Markdown](http://tullo.ch/LaTeX2Markdown) for a live demonstration of the converter.
+
+As an example, the following LaTeX code:
 
     \section{Example Section}
-    \begin{thm}[Euler]
+    \begin{thm}[Euclid]
         There are infinitely many primes.
     \end{thm}
 
     \begin{proof}
-        Suppose that $p_1 < p_2 < \dots < p_n$ are all of the primes. Let $P = 1 + \prod_{i=1}^n p_i$ and let $p$ be a prime dividing $P$.
+        Suppose that $p_1 < p_2 < \dots < p_n$ are all of the primes. 
+        Let $P = 1 + \prod_{i=1}^n p_i$ and let $p$ be a prime dividing $P$.
         
-        Then $p$ can not be any of $p_i$, for otherwise $p$ would divide the difference $P - \left(\prod_{i=1}^n p_i \right) - 1$, which is impossible. So this prime $p$ is still another prime, and $p_1, p_2, \dots p_n$ cannot be all of the primes.
+        Then $p$ can not be any of $p_i$, for otherwise $p$ would divide the 
+        difference $P - \left(\prod_{i=1}^n p_i \right) - 1$, which is impossible. 
+        So this prime $p$ is still another prime, and $p_1, p_2, \dots p_n$ 
+        cannot be all of the primes.
     \end{proof}
 
+is converted into the following Markdown markup:
     
     ###  Example Section
-    #### Theorem 1 (Euler)
-
+    #### Theorem 1 (Euclid)
 
     > There are infinitely many primes.
 
-
     #### Proof
 
-    Suppose that $p_1 < p_2 < \dots < p_n$ are all of the primes. Let $P = 1 + \prod_{i=1}^n p_i$ and let $p$ be a prime dividing $P$.
+    Suppose that $p_1 < p_2 < \dots < p_n$ are all of the primes. 
+    Let $P = 1 + \prod_{i=1}^n p_i$ and let $p$ be a prime dividing $P$.
 
-    Then $p$ can not be any of $p_i$, for otherwise $p$ would divide the difference $P - \left(\prod_{i=1}^n p_i \right) - 1$, which is impossible. So this prime $p$ is still another prime, and $p_1, p_2, \dots p_n$ cannot be all of the primes.
+    Then $p$ can not be any of $p_i$, for otherwise $p$ would divide the difference 
+    $P - \left(\prod_{i=1}^n p_i \right) - 1$, which is impossible. So this prime 
+    $p$ is still another prime, and $p_1, p_2, \dots p_n$ cannot be all of the primes.
 
 ## Usage
 
