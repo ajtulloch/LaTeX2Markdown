@@ -1,4 +1,9 @@
 {
+    "chapter": {
+        "markdown_heading": "##", 
+        "pretty_name": "", 
+        "show_count": false
+    }, 
     "enumerate": {
         "line_indent_char": "", 
         "list_heading": "1.", 
@@ -37,8 +42,19 @@
         "pretty_name": "Proof", 
         "show_count": false
     }, 
+    "prop": {
+        "line_indent_char": "> ", 
+        "markdown_heading": "####", 
+        "pretty_name": "Proposition", 
+        "show_count": true
+    }, 
     "section": {
         "markdown_heading": "###", 
+        "pretty_name": "", 
+        "show_count": false
+    }, 
+    "subsection": {
+        "markdown_heading": "####", 
         "pretty_name": "", 
         "show_count": false
     }, 

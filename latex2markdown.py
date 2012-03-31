@@ -24,6 +24,7 @@ class LaTeX2Markdown(object):
                                     flags=re.DOTALL + re.VERBOSE)
 
         self._block_re = re.compile(r"""\\begin{(?P<block_name>exer|proof|thm|lem|prop)} # block name
+                                    (\[(?P<block_title>.*?)\])? # Optional block title
                                     (?P<block_contents>.*?) # Non-greedy block contents
                                     \\end{(?P=block_name)}""", # closing block
                                     flags=re.DOTALL + re.VERBOSE)
@@ -57,7 +58,8 @@ class LaTeX2Markdown(object):
     def _replace_block(self, matchobj):
         block_name = matchobj.group('block_name')
         block_contents = matchobj.group('block_contents')
-    
+        block_title = matchobj.groupdict().get('block_title')
+        
         if block_name in {"itemize", "enumerate"}:
             formatted_contents = self._format_list_contents(block_name, 
                                                         block_contents)
@@ -65,7 +67,7 @@ class LaTeX2Markdown(object):
             formatted_contents = self._format_block_contents(block_name,
                                                         block_contents)
     
-        header = self._format_block_name(block_name)
+        header = self._format_block_name(block_name, block_title)
     
         output_str = "{header}\n\n{block_contents}".format(
                         header=header, 
@@ -97,7 +99,7 @@ class LaTeX2Markdown(object):
             output_str += markdown_list_line + "\n"
         return output_str
     
-    def _format_block_name(self, block_name):
+    def _format_block_name(self, block_name, block_title=None):
         block_config = self._block_configuration[block_name]
         pretty_name = block_config["pretty_name"]
         show_count = block_config["show_count"]
@@ -110,7 +112,11 @@ class LaTeX2Markdown(object):
                         markdown_heading=markdown_heading, 
                         pretty_name=pretty_name, 
                         block_count=block_count)
-    
+        if block_title:
+            output_str = "{output_str} ({block_title})".format(
+                        output_str=output_str,
+                        block_title=block_title)
+                        
         return output_str.lstrip().rstrip()
         
     def latex_to_markdown(self):
@@ -133,7 +139,9 @@ class LaTeX2Markdown(object):
         output = re.sub(r"\\%", r"%", output)
         # Fix argmax, etc.
         output = re.sub(r"\\arg(max|min)", r"\\text{arg\1}", output)
-        output = re.sub(r"% LaTeX2Markdown IGNORE(.*?)\% LaTeX2Markdown END", "", output, flags=re.DOTALL)
+        # Throw away content in IGNORE/END block
+        output = re.sub(r"% LaTeX2Markdown IGNORE(.*?)\% LaTeX2Markdown END", 
+                        "", output, flags=re.DOTALL)
         return output
 
 #------------------------------------------------------------------------------
@@ -141,8 +149,8 @@ class LaTeX2Markdown(object):
 if __name__ == '__main__':
     import sys
     if len(sys.argv) == 1:
-        input_file = "Examples/x.tex"
-        output_file = "y.md"
+        input_file = "latex_sample.tex"
+        output_file = "converted_latex_sample.md"
     else:
         input_file, output_file = sys.argv[1], sys.argv[2]
         

@@ -40,8 +40,8 @@ tabsize=2
 % LaTeX2Markdown END
 
 \section{Example Section}
-\begin{thm}
-    There are infinitely many primes
+\begin{thm}[Euler]
+    There are infinitely many primes.
 \end{thm}
 
 \begin{proof}
@@ -67,8 +67,8 @@ To solve this exercise, we first introduce the following lemma.
 
 We can now provide a solution to the exercise.
 
-\begin{thm}
-    There are infinitely many prime numbers (Goldbach's proof) 
+\begin{thm}[Goldbach's prove of the infinitude of primes]
+    There are infinitely many prime numbers.
 \end{thm}
 
 \begin{proof}
@@ -87,29 +87,22 @@ cat latex.tex | python latex2markdown.py > markdown.md
     \item Another list item
 \end{enumerate}
 
-\begin{thm}[Strong law of large numbers]  Let $X_1, \dots$ be IID random variables.  Let $\E(X_1) = \mu$, $\E(X_1^4) < \infty$.  Let $S_n = \sum_{j=1}^n X_j$.  Then \[
-    \overline X_n = \frac{1}{n} S_n \cas \mu 
-\]
+\begin{thm}
+    This is a theorem.
 \end{thm}
 
+\begin{thm}[Theorem name]
+    This is a named theorem.
+\end{thm}
+
+\begin{lem}
+    This is a lemma.
+\end{lem}
+
 \begin{proof}
-    \begin{align*}
-        \E(\sum_{i=1}^n (X_i - \mu))^4 &= \sum_{i=1}^n E(X_i - \mu)^4 + 6 {n \choose 2} \sigma^4 \\
-        &= n \E(X_1 - \mu)^4 + 3n(n-1) \sigma^4 \\
-        &\leq Cn^2. 
-    \end{align*}
-    From Chebyshev, we have 
-    \begin{align*}
-        P(| S_n - \mu n| > \epsilon n) &\leq \frac{E(S_n - \mu n)^4}{)(\epsilon n)^4} \\
-                &\leq \frac{cn^2}{\epsilon^4 n^4} = \frac{k}{n^2} 
-    \end{align*}
-    and so \[
-        \sum_n P(|S_n - n \mu| > n \epsilon) < \infty,  \]
-    and so $P(\limsup \{ | \frac{S_n}{n} - \mu | > \epsilon \} ) = 0$.  Letting $A_\epsilon = \{ | \frac{S_n}{n} - \mu | > \epsilon \}$.  Then 
-    \begin{align*}
-        P(|\frac{S_n}{n} - \mu | \text{ does not converge to zero}) &= P(\bigcup_k A_{1/k}) \\
-        &\leq \sum_{k} P(A_{1/k}) \\
-        &= 0
-    \end{align*} by Borel-Cantelli.
+    This is a proof.
 \end{proof}
+
+
+
 \end{document}
