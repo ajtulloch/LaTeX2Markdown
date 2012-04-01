@@ -8,6 +8,14 @@ Anyone who writes LaTeX documents using the AMSTeX packages (`amsmath`, `amsthm`
 
 In short, if you seek to use MathJaX to view your LaTeX documents online, then you might be interested in this.
 
+## Installation
+
+    pip install latex2markdown
+    
+or 
+
+    easy_install latex2markdown
+
 ## Why not use Pandoc?
 
 Pandoc is an excellent document converter for less complex LaTeX documents.  Unfortunately, it is not designed to deal with documents that use the AMSTeX extensions - which include the theorem, lemma, proof, and exercise environments that are heavily used for typesetting papers, lecture notes, and other documents.
@@ -35,7 +43,7 @@ As an example, the following LaTeX code:
         cannot be all of the primes.
     \end{proof}
 
-is converted into the following Markdown markup:
+is converted into the following Markdown:
     
     ###  Example Section
     #### Theorem 1 (Euclid)
@@ -55,7 +63,12 @@ is converted into the following Markdown markup:
 
 Once the repository has been cloned, converting your LaTeX files is as simple as calling:
 
-    python latex2markdown.py path/to/latex/file path/to/output/file
+    python latex2markdown.py path/to/latex/file path/to/output/markdown/file
+    
+For example, to compile the example LaTeX document, call
+
+    python latex2markdown.py examples/latex_sample.tex markdown_example.tex
+
 
 ## Supported LaTeX/AMSTeX Environments
 
