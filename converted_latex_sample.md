@@ -1,6 +1,12 @@
-###  Example Section
+##  Usage
 
-#### Theorem 1 (Euclid)
+
+###  Simple Examples
+
+
+This section introduces the usage of the LaTeX2Markdown tool, showing an example of the various environments available.  
+
+#### Theorem 1 (Euclid, 300 BC)
 
 > There are infinitely many primes.
 
@@ -25,14 +31,14 @@ To solve this exercise, we first introduce the following lemma.
 
 #### Proof
 
-It is easy to show by induction that \[
-F_m - 2 = F_0 F_1 \dots F_{m-1}.
-\]  This means that if $d$ divides both $F_n$ and $F_m$ (with $n < m$), then $d$ also divides $F_m - 2$.  Hence, $d$ divides 2.  But every Fermat number is odd, so $d$ is necessarily one.  This proves the lemma.
+It is easy to show by induction that
+\[ F_m - 2 = F_0 F_1 \dots F_{m-1}. \]
+This means that if $d$ divides both $F_n$ and $F_m$ (with $n < m$), then $d$ also divides $F_m - 2$.  Hence, $d$ divides 2.  But every Fermat number is odd, so $d$ is necessarily one.  This proves the lemma.
 
 
 We can now provide a solution to the exercise.
 
-#### Theorem 2 (Goldbach's proof of the infinitude of primes)
+#### Theorem 2 (Goldbach, 1750)
 
 > There are infinitely many prime numbers.
 
@@ -42,21 +48,29 @@ We can now provide a solution to the exercise.
 Choose a prime divisor $p_n$ of each Fermat number $F_n$.  By the lemma we know these primes are all distinct, showing there are infinitely many primes.
 
 
-###  LaTeX examples
+###  Available environments
 
 
 We can format *italic text*, **bold text**, and `code` blocks.
 
 
 
-1. A list item
-1. Another list item
+1. A numbered list item
+1. Another numbered list item
+
+
+
+
+* A bulleted list item
+* Another bulleted list item
+
 
 
 #### Theorem 3
 
-> This is a theorem.  It contains an `align` block.
+> This is a theorem.  It contains an `align` block.  All math environments supported by MathJaX should work with LaTeX
 > 
+> Maxwell's equations, differential form.
 > \begin{align}
 > \nabla \cdot \mathbf{E} &= \frac {\rho} {\varepsilon_0} \\\\
 > \nabla \cdot \mathbf{B} &= 0 \\\\

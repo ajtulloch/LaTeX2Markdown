@@ -6,7 +6,7 @@
     }, 
     "enumerate": {
         "line_indent_char": "", 
-        "list_heading": "1.", 
+        "list_heading": "1. ", 
         "markdown_heading": "", 
         "pretty_name": "", 
         "show_count": false
@@ -19,7 +19,7 @@
     }, 
     "itemize": {
         "line_indent_char": "", 
-        "list_heading": "*", 
+        "list_heading": "* ", 
         "markdown_heading": "", 
         "pretty_name": "", 
         "show_count": false

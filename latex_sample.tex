@@ -4,34 +4,13 @@
 \usepackage{listings}
 \onehalfspacing                 
 
-\usepackage[usenames, dvipsnames]{color}
-\definecolor{graphblue}{RGB}{52, 138, 189}
-\definecolor{graphpurple}{RGB}{122, 104, 166}
-
 \theoremstyle{plain}% default 
 \newtheorem{thm}{Theorem}[section] 
 \newtheorem{lem}[thm]{Lemma} 
 \newtheorem{prop}[thm]{Proposition} 
 \newtheorem{exer}[thm]{Exercise} 
 
-\lstset{
-language=bash,
-stepnumber=0,
-showspaces=false,
-breaklines=true,
-basicstyle=\ttfamily\scriptsize,
-frame=single,
-commentstyle=\scriptsize,
-prebreak=\raisebox{0ex}[0ex][0ex]{\ensuremath{\hookleftarrow}},
-showstringspaces=false,
-showtabs=false,
-identifierstyle=\ttfamily,
-commentstyle=\color{graphpurple},
-keywordstyle=\color{graphblue},
-tabsize=2
-}
-
-\title{Introduction to LaTeX2Markdown}
+\title{LaTeX2Markdown Examples}
 \author{Andrew Tulloch}
 \begin{document}
 
@@ -39,8 +18,14 @@ tabsize=2
 \maketitle
 % LaTeX2Markdown END
 
-\section{Example Section}
-\begin{thm}[Euclid]
+
+\chapter{Usage}
+
+\section{Simple Examples}
+
+This section introduces the usage of the LaTeX2Markdown tool, showing an example of the various environments available.  
+
+\begin{thm}[Euclid, 300 BC]
     There are infinitely many primes.
 \end{thm}
 
@@ -60,14 +45,14 @@ To solve this exercise, we first introduce the following lemma.
 \end{lem}
 
 \begin{proof}
-    It is easy to show by induction that \[
-    F_m - 2 = F_0 F_1 \dots F_{m-1}.
-    \]  This means that if $d$ divides both $F_n$ and $F_m$ (with $n < m$), then $d$ also divides $F_m - 2$.  Hence, $d$ divides 2.  But every Fermat number is odd, so $d$ is necessarily one.  This proves the lemma.
+    It is easy to show by induction that 
+    \[ F_m - 2 = F_0 F_1 \dots F_{m-1}. \]
+    This means that if $d$ divides both $F_n$ and $F_m$ (with $n < m$), then $d$ also divides $F_m - 2$.  Hence, $d$ divides 2.  But every Fermat number is odd, so $d$ is necessarily one.  This proves the lemma.
 \end{proof}
 
 We can now provide a solution to the exercise.
 
-\begin{thm}[Goldbach's proof of the infinitude of primes]
+\begin{thm}[Goldbach, 1750]
     There are infinitely many prime numbers.
 \end{thm}
 
@@ -75,18 +60,25 @@ We can now provide a solution to the exercise.
     Choose a prime divisor $p_n$ of each Fermat number $F_n$.  By the lemma we know these primes are all distinct, showing there are infinitely many primes.
 \end{proof}
 
-\section{LaTeX examples}
+\section{Available environments}
 
 We can format \emph{italic text}, \textbf{bold text}, and \texttt{code} blocks.
 
 \begin{enumerate}
-    \item A list item
-    \item Another list item
+    \item A numbered list item
+    \item Another numbered list item
 \end{enumerate}
 
+\begin{itemize}
+    \item A bulleted list item
+    \item Another bulleted list item
+\end{itemize}
+
+
 \begin{thm}
-    This is a theorem.  It contains an \texttt{align} block.
+    This is a theorem.  It contains an \texttt{align} block.  All math environments supported by MathJaX should work with LaTeX
     
+    Maxwell's equations, differential form.
     \begin{align*}
         \nabla \cdot \mathbf{E} &= \frac {\rho} {\varepsilon_0} \\
         \nabla \cdot \mathbf{B} &= 0 \\

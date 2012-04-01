@@ -8,7 +8,6 @@ import json
 with open("config.json", "r") as f:
     _block_configuration = json.load(f)
 
-
 #------------------------------------------------------------------------------
 
 class LaTeX2Markdown(object):
@@ -197,7 +196,7 @@ class LaTeX2Markdown(object):
         # Throw away content in IGNORE/END block
         output = re.sub(r"% LaTeX2Markdown IGNORE(.*?)\% LaTeX2Markdown END",
                         "", output, flags=re.DOTALL)
-        return output
+        return output.lstrip().rstrip()
 
 #------------------------------------------------------------------------------
 
@@ -208,10 +207,10 @@ if __name__ == '__main__':
         output_file = "converted_latex_sample.md"
     else:
         input_file, output_file = sys.argv[1], sys.argv[2]
-
+        
     with open(input_file, 'r') as f:
         latex_string = f.read()
         y = LaTeX2Markdown(latex_string)
-        markdown_string = y.latex_to_markdown().lstrip().rstrip()
+        markdown_string = y.latex_to_markdown()
         with open(output_file, 'w') as f_out:
             f_out.write(markdown_string)
