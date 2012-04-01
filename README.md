@@ -56,3 +56,17 @@ is converted into the following Markdown markup:
 Once the repository has been cloned, converting your LaTeX files is as simple as calling:
 
     python latex2markdown.py path/to/latex/file path/to/output/file
+
+## Supported LaTeX/AMSTeX Environments
+
+* `emph`, `textbf`, `texttt`
+* `thm`
+* `prop`
+* `lem`
+* `exer  `
+* `proof`
+* `chapter`
+* `section`
+* `subsection`
+* `itemize`
+* `enumerate`

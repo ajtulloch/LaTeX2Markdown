@@ -55,20 +55,19 @@ We can format *italic text*, **bold text**, and `code` blocks.
 
 
 
-1. A numbered list item
-1. Another numbered list item
+1.  A numbered list item
+1.  Another numbered list item
 
 
 
 
-* A bulleted list item
-* Another bulleted list item
-
+*  A bulleted list item
+*  Another bulleted list item
 
 
 #### Theorem 3
 
-> This is a theorem.  It contains an `align` block.  All math environments supported by MathJaX should work with LaTeX
+> This is a theorem.  It contains an `align` block.  All math environments supported by MathJaX should work with LaTeX - a full list is available on the MathJaX homepage.
 > 
 > Maxwell's equations, differential form.
 > \begin{align}
@@ -87,6 +86,11 @@ We can format *italic text*, **bold text**, and `code` blocks.
 #### Lemma 2
 
 > This is a lemma.
+
+
+#### Proposition 1
+
+> This is a proposition
 
 
 #### Proof

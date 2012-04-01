@@ -164,7 +164,7 @@ class LaTeX2Markdown(object):
 
         return output_str.lstrip().rstrip()
 
-    def latex_to_markdown(self):
+    def _latex_to_markdown(self):
         """Main function, returns the formatted Markdown as a string.
         Uses a lot of custom regexes to fix a lot of content - you may have
         to add or remove some regexes to suit your own needs."""
@@ -197,20 +197,26 @@ class LaTeX2Markdown(object):
         output = re.sub(r"% LaTeX2Markdown IGNORE(.*?)\% LaTeX2Markdown END",
                         "", output, flags=re.DOTALL)
         return output.lstrip().rstrip()
-
+    
+    def to_markdown(self):
+        return self._latex_to_markdown()
+    
+    def to_latex(self):
+        return self._latex_string
+        
 #------------------------------------------------------------------------------
 
 if __name__ == '__main__':
     import sys
     if len(sys.argv) == 1:
-        input_file = "latex_sample.tex"
-        output_file = "converted_latex_sample.md"
+        input_file = "examples/latex_sample.tex"
+        output_file = "examples/converted_latex_sample.md"
     else:
         input_file, output_file = sys.argv[1], sys.argv[2]
         
     with open(input_file, 'r') as f:
         latex_string = f.read()
         y = LaTeX2Markdown(latex_string)
-        markdown_string = y.latex_to_markdown()
+        markdown_string = y.to_markdown()
         with open(output_file, 'w') as f_out:
             f_out.write(markdown_string)
