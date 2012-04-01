@@ -1,14 +1,28 @@
 # LaTeX2Markdown
 
-An AMSTeX compatible converter from (a subset of) LaTeX to MathJaX compatible Markdown.
+An [AMS-LaTeX][amslatex] compatible converter from (a subset of) [LaTeX][latex] to [MathJaX][mathjax] compatible [Markdown][markdown].
+
+[amslatex]: http://en.wikipedia.org/wiki/AMS-LaTeX
+[latex]: http://www.latex-project.org/
+[mathjax]: http://www.mathjax.org/
+[markdown]: http://daringfireball.net/projects/markdown/
 
 ## Who should use this?
 
-Anyone who writes LaTeX documents using the AMSTeX packages (`amsmath`, `amsthm`, `amssymb`) and wants to convert these documents to Markdown format to use with MathJaX.  The outputted Markdown files can then be easily added to any web platform - Jekyll blogs, Wordpress, basic HTML sites, etc. 
+Anyone who writes LaTeX documents using the AMS-LaTeX packages (`amsmath`, `amsthm`, `amssymb`) and wants to convert these documents to Markdown format to use with MathJaX.  The outputted Markdown files can then be easily added to any web platform - Jekyll blogs, Wordpress, basic HTML sites, etc. 
 
 In short, if you seek to use MathJaX to view your LaTeX documents online, then you might be interested in this.
 
-## Installation
+## Demonstration
+
+Check out [tullo.ch/projects/LaTeX2Markdown](http://tullo.ch/projects/LaTeX2Markdown) for a live demonstration of the converter.
+
+
+## Getting Started
+
+### Installation
+
+The project is available on PyPI, so getting it is as simple as using 
 
     pip install latex2markdown
     
@@ -16,15 +30,58 @@ or
 
     easy_install latex2markdown
 
+### Usage
+
+The utility can be called from the command line, or from within a Python script.
+
+For the command line, the syntax to convert a LaTeX file to a Markdown file is as follows:
+
+    python latex2markdown.py path/to/latex/file path/to/output/markdown/file
+
+For example, to compile the example LaTeX document, call
+
+    python latex2markdown.py examples/latex_sample.tex markdown_example.tex
+
+To use it within a Python script, use it as follows:
+
+    import latex2markdown
+    with open("latex_file.tex", "r") as f:
+        latex_string = f.read()
+    
+    l2m = latex2markdown.LaTeX2Markdown(latex_string)
+    
+    markdown_string = l2m.to_markdown()
+    
+    with open("markdown_file.md", "w") as f:
+        f.write(markdown_string)
+
+Finally, add the following snippet to your HTML when loading this document.
+
+    <script type="text/x-mathjax-config">
+        MathJax.Hub.Config({
+            extensions: ["tex2jax.js", "AMSmath.js"],
+            jax: ["input/TeX", "output/HTML-CSS"],
+            tex2jax: {
+                inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+                displayMath: [ ['$$','$$'], ["\[","\]"] ],
+                processEscapes: true
+            },
+        });
+    </script>
+    <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">                                                                                                 
+    </script>
+    
+For a working example, have a look at the source of the [tullo.ch](http://tullo.ch) homepage [here](https://github.com/ajtulloch/ajtulloch.github.com).
+
 ## Why not use Pandoc?
 
-Pandoc is an excellent document converter for less complex LaTeX documents.  Unfortunately, it is not designed to deal with documents that use the AMSTeX extensions - which include the theorem, lemma, proof, and exercise environments that are heavily used for typesetting papers, lecture notes, and other documents.
+[Pandoc][pandoc] is an excellent document converter for less complex LaTeX documents.  Indeed, I've used it to convert this document to a RestructuredText version for use on PyPI.
+
+Unfortunately, it is not designed to deal with documents that use the AMSTeX extensions - which include the theorem, lemma, proof, and exercise environments that are heavily used for typesetting papers, lecture notes, and other documents.
 
 As neither Pandoc nor MathJax can deal with these documents, I hacked together a set of regular expressions that can convert a subset of LaTeX to Markdown, and used a few more to convert this Markdown to MathJaX-convertible Markdown.
 
-## What's an example?
-
-Go to [tullo.ch/LaTeX2Markdown](http://tullo.ch/LaTeX2Markdown) for a live demonstration of the converter.
+## Example
 
 As an example, the following LaTeX code:
 
@@ -59,16 +116,6 @@ is converted into the following Markdown:
     $P - \left(\prod_{i=1}^n p_i \right) - 1$, which is impossible. So this prime 
     $p$ is still another prime, and $p_1, p_2, \dots p_n$ cannot be all of the primes.
 
-## Usage
-
-Once the repository has been cloned, converting your LaTeX files is as simple as calling:
-
-    python latex2markdown.py path/to/latex/file path/to/output/markdown/file
-    
-For example, to compile the example LaTeX document, call
-
-    python latex2markdown.py examples/latex_sample.tex markdown_example.tex
-
 
 ## Supported LaTeX/AMSTeX Environments
 
@@ -83,3 +130,5 @@ For example, to compile the example LaTeX document, call
 * `subsection`
 * `itemize`
 * `enumerate`
+
+along with everything supported by MathJax - list available [here](http://www.mathjax.org/docs/2.0/tex.html#supported-latex-commands).
