@@ -2,3 +2,5 @@
 *.rst
 build/*
 dist/*
+examples/*.log
+examples/*.aux
