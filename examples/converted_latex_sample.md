@@ -1,6 +1,3 @@
-##  Usage
-
-
 ###  Simple Examples
 
 
@@ -48,7 +45,7 @@ We can now provide a solution to the exercise.
 Choose a prime divisor $p_n$ of each Fermat number $F_n$.  By the lemma we know these primes are all distinct, showing there are infinitely many primes.
 
 
-###  Available environments
+###  Demonstration of the environments
 
 
 We can format *italic text*, **bold text**, and `code` blocks.
@@ -67,7 +64,9 @@ We can format *italic text*, **bold text**, and `code` blocks.
 
 #### Theorem 3
 
-> This is a theorem.  It contains an `align` block.  All math environments supported by MathJaX should work with LaTeX - a full list is available on the MathJaX homepage.
+> This is a theorem.  It contains an `align` block.
+> 
+> All math environments supported by MathJaX should work with LaTeX - a full list is available on the MathJaX homepage.
 > 
 > Maxwell's equations, differential form.
 > \begin{align}
@@ -101,3 +100,5 @@ This is a proof.
 
 
     This is a code listing.
+    One line of code
+    Another line of code
