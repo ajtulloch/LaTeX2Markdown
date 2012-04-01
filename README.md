@@ -6,7 +6,7 @@ An [AMS-LaTeX][amslatex] compatible converter from (a subset of) [LaTeX][latex] 
 [latex]: http://www.latex-project.org/
 [mathjax]: http://www.mathjax.org/
 [markdown]: http://daringfireball.net/projects/markdown/
-
+[pandoc]: http://johnmacfarlane.net/pandoc/
 ## Who should use this?
 
 Anyone who writes LaTeX documents using the AMS-LaTeX packages (`amsmath`, `amsthm`, `amssymb`) and wants to convert these documents to Markdown format to use with MathJaX.  The outputted Markdown files can then be easily added to any web platform - Jekyll blogs, Wordpress, basic HTML sites, etc. 
