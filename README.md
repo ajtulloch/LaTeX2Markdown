@@ -9,7 +9,7 @@ An [AMS-LaTeX][amslatex] compatible converter from (a subset of) [LaTeX][latex] 
 [pandoc]: http://johnmacfarlane.net/pandoc/
 ## Who should use this?
 
-Anyone who writes LaTeX documents using the AMS-LaTeX packages (`amsmath`, `amsthm`, `amssymb`) and wants to convert these documents to Markdown format to use with MathJaX.  The outputted Markdown files can then be easily added to any web platform - Jekyll blogs, Wordpress, basic HTML sites, etc. 
+Anyone who writes LaTeX documents using the AMS-LaTeX packages (`amsmath`, `amsthm`, `amssymb`) and wants to convert these documents to Markdown format to use with MathJaX.  These Markdown files can then be easily added to any web platform - Jekyll blogs, Wordpress, basic HTML sites, etc. 
 
 In short, if you seek to use MathJaX to view your LaTeX documents online, then you might be interested in this.
 
@@ -68,18 +68,18 @@ Finally, add the following snippet to your HTML when loading this document.
             },
         });
     </script>
-    <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">                                                                                                 
+    <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
     </script>
     
 For a working example, have a look at the source of the [tullo.ch](http://tullo.ch) homepage [here](https://github.com/ajtulloch/ajtulloch.github.com).
 
 ## Why not use Pandoc?
 
-[Pandoc][pandoc] is an excellent document converter for less complex LaTeX documents.  Indeed, I've used it to convert this document to a RestructuredText version for use on PyPI.
+[Pandoc][pandoc] is an excellent document converter for less complex LaTeX documents.  Indeed, I've used it to convert this README document to a reST version for use on PyPI.
 
 Unfortunately, it is not designed to deal with documents that use the AMSTeX extensions - which include the theorem, lemma, proof, and exercise environments that are heavily used for typesetting papers, lecture notes, and other documents.
 
-As neither Pandoc nor MathJax can deal with these documents, I hacked together a set of regular expressions that can convert a subset of LaTeX to Markdown, and used a few more to convert this Markdown to MathJaX-convertible Markdown.
+As neither Pandoc nor MathJax can deal with these documents, I hacked together a set of regular expressions that can convert a subset of LaTeX to Markdown, and used a few more to convert Markdown to MathJaX-convertible Markdown.
 
 ## Example
 

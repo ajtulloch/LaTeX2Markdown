@@ -17,10 +17,10 @@ setup(
         name='latex2markdown',
         author="Andrew Tulloch",
         author_email="andrew@tullo.ch",
-        version='0.1.2',
+        version='0.1.3',
         py_modules=['latex2markdown'],
         url="https://github.com/ajtulloch/LaTeX2Markdown",
-        description="An AMSTeX compatible converter that maps a subset of AMSTeX and LaTeX to Markdown/MathJaX.",      
+        description="An AMSTeX compatible converter that maps a subset of AMSTeX and LaTeX to Markdown/MathJaX.",
         classifiers=[
             "Development Status :: 3 - Alpha",
             "Environment :: Console",
