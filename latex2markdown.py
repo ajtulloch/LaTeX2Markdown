@@ -3,10 +3,74 @@ from collections import defaultdict
 
 #------------------------------------------------------------------------------
 
-import json
-# Load our JSON configuration file.
-with open("config.json", "r") as f:
-    _block_configuration = json.load(f)
+# Basic configuration - modify this to change output formatting
+_block_configuration = {
+    "chapter": {
+        "markdown_heading": "##", 
+        "pretty_name": "", 
+        "show_count": False
+    }, 
+    "enumerate": {
+        "line_indent_char": "", 
+        "list_heading": "1. ", 
+        "markdown_heading": "", 
+        "pretty_name": "", 
+        "show_count": False
+    }, 
+    "exer": {
+        "line_indent_char": "> ", 
+        "markdown_heading": "####", 
+        "pretty_name": "Exercise", 
+        "show_count": True
+    }, 
+    "itemize": {
+        "line_indent_char": "", 
+        "list_heading": "* ", 
+        "markdown_heading": "", 
+        "pretty_name": "", 
+        "show_count": False
+    }, 
+    "lem": {
+        "line_indent_char": "> ", 
+        "markdown_heading": "####", 
+        "pretty_name": "Lemma", 
+        "show_count": True
+    }, 
+    "lstlisting": {
+        "line_indent_char": "    ", 
+        "markdown_heading": "", 
+        "pretty_name": "", 
+        "show_count": False
+    }, 
+    "proof": {
+        "line_indent_char": "", 
+        "markdown_heading": "####", 
+        "pretty_name": "Proof", 
+        "show_count": False
+    }, 
+    "prop": {
+        "line_indent_char": "> ", 
+        "markdown_heading": "####", 
+        "pretty_name": "Proposition", 
+        "show_count": True
+    }, 
+    "section": {
+        "markdown_heading": "###", 
+        "pretty_name": "", 
+        "show_count": False
+    }, 
+    "subsection": {
+        "markdown_heading": "####", 
+        "pretty_name": "", 
+        "show_count": False
+    }, 
+    "thm": {
+        "line_indent_char": "> ", 
+        "markdown_heading": "####", 
+        "pretty_name": "Theorem", 
+        "show_count": True
+    }
+}
 
 #------------------------------------------------------------------------------
 
@@ -209,8 +273,8 @@ class LaTeX2Markdown(object):
 if __name__ == '__main__':
     import sys
     if len(sys.argv) == 1:
-        input_file = "examples/latex_sample.tex"
-        output_file = "examples/converted_latex_sample.md"
+        input_file = "bin/latex_sample.tex"
+        output_file = "bin/converted_latex_sample.md"
     else:
         input_file, output_file = sys.argv[1], sys.argv[2]
         

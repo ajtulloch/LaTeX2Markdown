@@ -1,1 +1,5 @@
-include README.rst
+include *.txt
+recursive-include docs *.txt
+recursive-include bin *.tex
+recursive-include bin *.md
+recursive-include bin *.pdf
