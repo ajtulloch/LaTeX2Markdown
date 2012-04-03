@@ -6,68 +6,68 @@ from collections import defaultdict
 # Basic configuration - modify this to change output formatting
 _block_configuration = {
     "chapter": {
-        "markdown_heading": "##", 
-        "pretty_name": "", 
+        "markdown_heading": "##",
+        "pretty_name": "",
         "show_count": False
-    }, 
+    },
     "enumerate": {
-        "line_indent_char": "", 
-        "list_heading": "1. ", 
-        "markdown_heading": "", 
-        "pretty_name": "", 
+        "line_indent_char": "",
+        "list_heading": "1. ",
+        "markdown_heading": "",
+        "pretty_name": "",
         "show_count": False
-    }, 
+    },
     "exer": {
-        "line_indent_char": "> ", 
-        "markdown_heading": "####", 
-        "pretty_name": "Exercise", 
+        "line_indent_char": "> ",
+        "markdown_heading": "####",
+        "pretty_name": "Exercise",
         "show_count": True
-    }, 
+    },
     "itemize": {
-        "line_indent_char": "", 
-        "list_heading": "* ", 
-        "markdown_heading": "", 
-        "pretty_name": "", 
+        "line_indent_char": "",
+        "list_heading": "* ",
+        "markdown_heading": "",
+        "pretty_name": "",
         "show_count": False
-    }, 
+    },
     "lem": {
-        "line_indent_char": "> ", 
-        "markdown_heading": "####", 
-        "pretty_name": "Lemma", 
+        "line_indent_char": "> ",
+        "markdown_heading": "####",
+        "pretty_name": "Lemma",
         "show_count": True
-    }, 
+    },
     "lstlisting": {
-        "line_indent_char": "    ", 
-        "markdown_heading": "", 
-        "pretty_name": "", 
+        "line_indent_char": "    ",
+        "markdown_heading": "",
+        "pretty_name": "",
         "show_count": False
-    }, 
+    },
     "proof": {
-        "line_indent_char": "", 
-        "markdown_heading": "####", 
-        "pretty_name": "Proof", 
+        "line_indent_char": "",
+        "markdown_heading": "####",
+        "pretty_name": "Proof",
         "show_count": False
-    }, 
+    },
     "prop": {
-        "line_indent_char": "> ", 
-        "markdown_heading": "####", 
-        "pretty_name": "Proposition", 
+        "line_indent_char": "> ",
+        "markdown_heading": "####",
+        "pretty_name": "Proposition",
         "show_count": True
-    }, 
+    },
     "section": {
-        "markdown_heading": "###", 
-        "pretty_name": "", 
+        "markdown_heading": "###",
+        "pretty_name": "",
         "show_count": False
-    }, 
+    },
     "subsection": {
-        "markdown_heading": "####", 
-        "pretty_name": "", 
+        "markdown_heading": "####",
+        "pretty_name": "",
         "show_count": False
-    }, 
+    },
     "thm": {
-        "line_indent_char": "> ", 
-        "markdown_heading": "####", 
-        "pretty_name": "Theorem", 
+        "line_indent_char": "> ",
+        "markdown_heading": "####",
+        "pretty_name": "Theorem",
         "show_count": True
     }
 }
@@ -234,7 +234,10 @@ class LaTeX2Markdown(object):
         to add or remove some regexes to suit your own needs."""
 
         # Get main content, skipping preamble and closing tags.
-        output = self._main_re.search(self._latex_string).group("main")
+        try:
+            output = self._main_re.search(self._latex_string).group("main")
+        except AttributeError:
+            output = self._latex_string
 
         # Reformat, lists, blocks, and headers.
         output = self._lists_re.sub(self._replace_block, output)
@@ -261,13 +264,13 @@ class LaTeX2Markdown(object):
         output = re.sub(r"% LaTeX2Markdown IGNORE(.*?)\% LaTeX2Markdown END",
                         "", output, flags=re.DOTALL)
         return output.lstrip().rstrip()
-    
+
     def to_markdown(self):
         return self._latex_to_markdown()
-    
+
     def to_latex(self):
         return self._latex_string
-        
+
 #------------------------------------------------------------------------------
 
 if __name__ == '__main__':
@@ -277,7 +280,7 @@ if __name__ == '__main__':
         output_file = "bin/converted_latex_sample.md"
     else:
         input_file, output_file = sys.argv[1], sys.argv[2]
-        
+
     with open(input_file, 'r') as f:
         latex_string = f.read()
         y = LaTeX2Markdown(latex_string)

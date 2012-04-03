@@ -36,13 +36,13 @@ The utility can be called from the command line, or from within a Python script.
 
 For the command line, the syntax to convert a LaTeX file to a Markdown file is as follows:
 
-    python latex2markdown.py path/to/latex/file path/to/output/markdown/file
+    python -m latex2markdown path/to/latex/file path/to/output/markdown/file
 
-For example, to compile the example LaTeX document, call
+For example, to compile a LaTeX file `sample.tex` into a Markdown file `sample.md`, call
 
-    python latex2markdown.py examples/latex_sample.tex markdown_example.tex
+    python -m latex2markdown sample.tex sample.md
 
-To use it within a Python script, use it as follows:
+To use it within a Python script (to extend it, modify output, etc.), you can use it as follows:
 
     import latex2markdown
     with open("latex_file.tex", "r") as f:
@@ -79,7 +79,7 @@ For a working example, have a look at the source of the [tullo.ch](http://tullo.
 
 Unfortunately, it is not designed to deal with documents that use the AMSTeX extensions - which include the theorem, lemma, proof, and exercise environments that are heavily used for typesetting papers, lecture notes, and other documents.
 
-As neither Pandoc nor MathJax can deal with these documents, I hacked together a set of regular expressions that can convert a subset of LaTeX to Markdown, and used a few more to convert Markdown to MathJaX-convertible Markdown.
+As neither Pandoc nor MathJaX can deal with these documents, I hacked together a set of regular expressions that can convert a subset of LaTeX to Markdown, and used a few more to convert the sMarkdown to MathJaX-convertible Markdown.
 
 ## Example
 
@@ -131,4 +131,4 @@ is converted into the following Markdown:
 * `itemize`
 * `enumerate`
 
-along with everything supported by MathJax - list available [here](http://www.mathjax.org/docs/2.0/tex.html#supported-latex-commands).
+along with everything supported by MathJax - list available [online](http://www.mathjax.org/docs/2.0/tex.html#supported-latex-commands).

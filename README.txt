@@ -1,4 +1,3 @@
-==============
 LaTeX2Markdown
 ==============
 
@@ -52,15 +51,17 @@ file is as follows:
 
 ::
 
-    python latex2markdown.py path/to/latex/file path/to/output/markdown/file
+    python -m latex2markdown path/to/latex/file path/to/output/markdown/file
 
-For example, to compile the example LaTeX document, call
+For example, to compile a LaTeX file ``sample.tex`` into a Markdown file
+``sample.md``, call
 
 ::
 
-    python latex2markdown.py examples/latex_sample.tex markdown_example.tex
+    python -m latex2markdown sample.tex sample.md
 
-To use it within a Python script, use it as follows:
+To use it within a Python script (to extend it, modify output, etc.),
+you can use it as follows:
 
 ::
 
@@ -111,9 +112,9 @@ AMSTeX extensions - which include the theorem, lemma, proof, and
 exercise environments that are heavily used for typesetting papers,
 lecture notes, and other documents.
 
-As neither Pandoc nor MathJax can deal with these documents, I hacked
+As neither Pandoc nor MathJaX can deal with these documents, I hacked
 together a set of regular expressions that can convert a subset of LaTeX
-to Markdown, and used a few more to convert Markdown to
+to Markdown, and used a few more to convert the sMarkdown to
 MathJaX-convertible Markdown.
 
 Example
