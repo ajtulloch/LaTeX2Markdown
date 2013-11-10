@@ -132,3 +132,7 @@ is converted into the following Markdown:
 * `enumerate`
 
 along with everything supported by MathJax - list available [online](http://www.mathjax.org/docs/2.0/tex.html#supported-latex-commands).
+
+
+[![Bitdeli Badge](https://d2weczhvl823v0.cloudfront.net/ajtulloch/latex2markdown/trend.png)](https://bitdeli.com/free "Bitdeli Badge")
+
